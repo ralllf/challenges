@@ -27,3 +27,11 @@ services:
     depends_on:
       - prometheus
 
+  storage_api:
+    build:
+      context: .
+    ports:
+      - 5001:5001
+    environment:
+      - PORT=5001
+    

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.38.0 (HEAD)
+  labels:
+    io.kompose.service: storage-api
+  name: storage-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: storage-api
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.38.0 (HEAD)
+      labels:
+        io.kompose.service: storage-api
+    spec:
+      containers:
+        - env:
+            - name: PORT
+              value: "5001"
+          image: storage-api:0.1.0
+          imagePullPolicy: IfNotPresent
+          name: storage-api
+          ports:
+            - containerPort: 5001
+              protocol: TCP
+      restartPolicy: Always

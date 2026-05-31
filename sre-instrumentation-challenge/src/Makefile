@@ -7,7 +7,7 @@ prod:
 	pip3 install -e .
 
 watch:
-	hupper -m waitress --port 5000 storage:app
+	hupper -m waitress --port 5001 storage:app
 
 lint:
 	mypy storage/
